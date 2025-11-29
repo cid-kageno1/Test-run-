@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saifullah Neoaz | Developer Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/Tyg3vZG.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#6366f1',
+                        },
+                        secondary: {
+                            500: '#a855f7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <custom-navbar></custom-navbar>
+    
+    <main class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 backdrop-blur-3xl -z-10"></div>
+            <div class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <div class="relative">
+                        <div class="absolute -inset-4 rounded-3xl bg-gradient-to-r from-primary-500 to-secondary-500 opacity-20 blur-lg"></div>
+                        <img src="https://i.imgur.com/Tyg3vZG.jpeg" alt="Saifullah Neoaz" class="relative w-64 h-64 rounded-2xl object-cover border-4 border-white/20 shadow-2xl">
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-4">Saifullah <span class="text-primary-500">Neoaz</span></h1>
+                    <h2 class="text-xl text-gray-600 dark:text-gray-300 mb-6">HSC26 Student • Developer • Learner</h2>
+                    <p class="text-gray-700 dark:text-gray-300 mb-8 max-w-lg">
+                        Passionate about AI, bot development, and web development. Currently studying at Holy Land College, Dinajpur, and constantly exploring new technologies.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            View Projects
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-white/10 dark:bg-gray-800/50 text-gray-900 dark:text-white rounded-lg font-medium backdrop-blur-md border border-white/20 hover:bg-white/20 dark:hover:bg-gray-700/50 transition-all duration-300">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white/5 dark:bg-gray-800/50 backdrop-blur-md">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">About <span class="text-primary-500">Me</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg">
+                            I'm a dedicated student at Holy Land College, Dinajpur, pursuing my HSC26. My passion lies in exploring cutting-edge technologies, particularly in artificial intelligence, bot development, and web development.
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg">
+                            I believe in continuous learning and improving my skills every day. Currently focusing on building practical projects that solve real-world problems.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 dark:bg-gray-800/50 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                                <div class="text-primary-500 mb-2">
+                                    <i data-feather="map-pin"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white">Location</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Fakir Para, Dinajpur</p>
+                            </div>
+                            <div class="bg-white/5 dark:bg-gray-800/50 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                                <div class="text-primary-500 mb-2">
+                                    <i data-feather="book"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white">Education</h3>
+                                <p class="text-gray-600 dark:text-gray-400">HSC26 - Holy Land College</p>
+                            </div>
+                            <div class="bg-white/5 dark:bg-gray-800/50 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                                <div class="text-primary-500 mb-2">
+                                    <i data-feather="heart"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white">Interests</h3>
+                                <p class="text-gray-600 dark:text-gray-400">AI, Bot Development, Web Dev</p>
+                            </div>
+                            <div class="bg-white/5 dark:bg-gray-800/50 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                                <div class="text-primary-500 mb-2">
+                                    <i data-feather="award"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white">Expertise</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Learning (Student)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-3xl blur-xl -z-10"></div>
+                        <div class="bg-white/5 dark:bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">My Skills</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-700 dark:text-gray-300">JavaScript</span>
+                                        <span class="text-gray-600 dark:text-gray-400">80%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-700 dark:text-gray-300">Python</span>
+                                        <span class="text-gray-600 dark:text-gray-400">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-700 dark:text-gray-300">HTML/CSS</span>
+                                        <span class="text-gray-600 dark:text-gray-400">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-gray-700 dark:text-gray-300">AI Development</span>
+                                        <span class="text-gray-600 dark:text-gray-400">65%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                        <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Featured <span class="text-primary-500">Projects</span></h2>
+                <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+                    Explore my latest work and contributions on GitHub. These projects showcase my skills and passion for development.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Goatbot-updated</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 18</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 133</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">GoatBot premium by NeoKEX ⚡</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary-500/10 text-primary-500 text-xs rounded-full">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/NeoKEX/Goatbot-updated" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">emailnator-tempmail</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 0</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">No description available</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                        </div>
+                        <a href="https://github.com/NeoKEX/emailnator-tempmail" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">neokex-ica</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 0</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">A POWERFUL INSTAGRAM CHAT-API LIBRARY ( created by NeoKEX )</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary-500/10 text-primary-500 text-xs rounded-full">JavaScript</span>
+                            <span class="px-2 py-1 bg-secondary-500/10 text-secondary-500 text-xs rounded-full">insta-chat-api</span>
+                        </div>
+                        <a href="https://github.com/NeoKEX/neokex-ica" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">neokex-ibot-v1</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 0</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">ADVANCED INSTAGRAM CHAT BOT by NeoKEX</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary-500/10 text-primary-500 text-xs rounded-full">JavaScript</span>
+                        </div>
+                        <a href="https://github.com/NeoKEX/neokex-ibot-v1" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Testing</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 0</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 1</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">No description available</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-primary-500/10 text-primary-500 text-xs rounded-full">Python</span>
+                        </div>
+                        <a href="https://github.com/NeoKEX/Testing" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="bg-white/5 dark:bg-gray-800/50 rounded-xl backdrop-blur-sm border border-white/10 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">register</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="star" class="w-4 h-4 mr-1"></i> 0</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center"><i data-feather="git-branch" class="w-4 h-4 mr-1"></i> 1</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Grab your own sweet-looking '.is-a.dev' subdomain.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                        </div>
+                        <a href="https://github.com/NeoKEX/register" class="inline-flex items-center text-primary-500 hover:text-primary-400 transition-colors duration-300">
+                            View on GitHub <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://github.com/NeoKEX?tab=repositories" class="inline-flex items-center px-6 
