@@ -164,7 +164,7 @@ async function sendMessage() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     try {
-        const res = await fetch(`https://noobs-api.top/dipto?text=${encodeURIComponent(msg)}`);
+        const res = await fetch(`https://simsimi.cyberbot.top/?text=${encodeURIComponent(msg)}`);
         const data = await res.json();
         loadingDiv.textContent = data.result || 'No response';
     } catch(err) {
