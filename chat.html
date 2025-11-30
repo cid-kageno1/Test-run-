@@ -4,28 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shadow Chat | Cid Kageno</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-    tailwind.config = {
-        darkMode: 'class',
-        theme: { extend: { colors: { primary: '#6366f1', secondary: '#a855f7' } } }
-    }
+tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: { colors: { primary: '#6366f1', secondary: '#a855f7' } } }
+}
 </script>
+
 <style>
-body { background: #111; color: white; font-family: sans-serif; }
-.chat-container { display: flex; flex-direction: column; max-width: 600px; margin: auto; height: 100vh; border: 1px solid #333; border-radius: 12px; overflow: hidden; }
-.chat-header { background: #a855f7; padding: 1rem; font-weight: bold; text-align: center; }
-.chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
-.message { max-width: 70%; padding: 0.5rem 1rem; border-radius: 1rem; word-break: break-word; }
-.message.user { align-self: flex-end; background: #6366f1; }
-.message.bot { align-self: flex-start; background: #333; }
-.chat-input { display: flex; border-top: 1px solid #333; }
-.chat-input input { flex: 1; padding: 0.8rem; background: #222; border: none; color: white; outline: none; }
-.chat-input button { padding: 0.8rem 1rem; background: #a855f7; border: none; cursor: pointer; color: white; }
+body {
+    background: url('https://i.postimg.cc/2yzZmtfq/background.jpg') center/cover no-repeat;
+    background-color: #111;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    width: 90%;
+    height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.chat-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    scroll-behavior: smooth;
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    word-break: break-word;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.message.user {
+    align-self: flex-end;
+    background: rgba(99,102,241,0.3);
+    border-color: rgba(99,102,241,0.5);
+}
+
+.message.bot {
+    align-self: flex-start;
+    background: rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: white;
+    outline: none;
+    border-radius: 0;
+}
+
+.chat-input button {
+    padding: 0.8rem 1rem;
+    background: rgba(168,85,247,0.6);
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.chat-input button:hover {
+    background: rgba(168,85,247,0.8);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
 </style>
 </head>
-<body class="dark">
 
+<body class="dark">
 <div class="chat-container">
     <div class="chat-header">ShadowGPT</div>
     <div class="chat-messages" id="chat-messages"></div>
@@ -39,6 +139,7 @@ body { background: #111; color: white; font-family: sans-serif; }
 const chatMessages = document.getElementById('chat-messages');
 const userMsgInput = document.getElementById('user-msg');
 const sendBtn = document.getElementById('send-btn');
+let sending = false;
 
 function addMessage(sender, text) {
     const div = document.createElement('div');
@@ -49,10 +150,12 @@ function addMessage(sender, text) {
 }
 
 async function sendMessage() {
+    if(sending) return;
     const msg = userMsgInput.value.trim();
     if(!msg) return;
+    sending = true;
     addMessage('user', msg);
-    userMsgInput.value='';
+    userMsgInput.value = '';
 
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'message bot';
@@ -66,12 +169,16 @@ async function sendMessage() {
         loadingDiv.textContent = data.result || 'No response';
     } catch(err) {
         loadingDiv.textContent = 'Error: Unable to reach API';
+        console.error(err);
+    } finally {
+        sending = false;
     }
 }
 
 sendBtn.addEventListener('click', sendMessage);
-userMsgInput.addEventListener('keypress', (e)=>{ if(e.key==='Enter') sendMessage(); });
+userMsgInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') sendMessage();
+});
 </script>
-
 </body>
 </html>
