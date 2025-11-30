@@ -22,38 +22,39 @@ tailwind.config = {
 
 <style>
 body {
-    background: url('https://i.postimg.cc/2yzZmtfq/background.jpg') center/cover no-repeat;
-    background-color: #111;
-    color: white;
+    margin: 0;
+    height: 100vh;
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    background: url('https://i.postimg.cc/2yzZmtfq/background.jpg') center/cover no-repeat;
+    background-color: #111;
+    color: white;
 }
 
 .chat-container {
     display: flex;
     flex-direction: column;
+    width: 95%;
     max-width: 400px;
-    width: 90%;
-    max-height: 80vh;
+    max-height: 90vh;
     border-radius: 20px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    position: relative;
 }
 
 .chat-header {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
     padding: 1rem;
     font-weight: bold;
     text-align: center;
     font-size: 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -65,6 +66,7 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     scroll-behavior: smooth;
+    margin-bottom: 70px; /* space for floating input */
 }
 
 .message {
@@ -93,9 +95,15 @@ body {
 }
 
 .chat-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     display: flex;
     border-top: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.3);
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
 
 .chat-input input {
@@ -104,26 +112,26 @@ body {
     background: rgba(255,255,255,0.05);
     border: none;
     color: white;
+    border-radius: 15px;
     outline: none;
 }
 
 .chat-input button {
+    margin-left: 0.5rem;
     padding: 0.8rem 1rem;
     background: rgba(168,85,247,0.6);
     border: none;
     cursor: pointer;
     color: white;
+    border-radius: 15px;
     transition: 0.2s;
-    border-left: 1px solid rgba(255,255,255,0.2);
 }
 
 .chat-input button:hover {
     background: rgba(168,85,247,0.8);
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
+@keyframes fadeIn { to { opacity: 1; } }
 
 ::-webkit-scrollbar {
     width: 6px;
