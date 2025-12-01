@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok 4.1 Chat Interface</title>
+    <style>
+        /* CSS Styling for a Clean Chat Interface */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background-color: #f7f7f7; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+        }
+        .chat-container { 
+            max-width: 800px; 
+            width: 90%;
+            margin: 20px auto; 
+            background: #fff; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            display: flex; 
+            flex-direction: column; 
+            height: 80vh; 
+        }
+        .chat-header {
+            padding: 15px 20px;
+            background-color: #1a1a1a;
+            color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .chat-window { 
+            flex-grow: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            border-bottom: 1px solid #ddd; 
+            background-color: #fafafa;
+        }
+        .message { 
+            margin-bottom: 15px; 
+            padding: 10px; 
+            border-radius: 15px; 
+            max-width: 80%; 
+            line-height: 1.4;
+        }
+        .user-message { 
+            background-color: #007bff; 
+            color: white; 
+            margin-left: auto; 
+            text-align: right; 
+            border-bottom-right-radius: 5px; 
+        }
+        .grok-message { 
+            background-color: #e2e8f0; 
+            color: #333; 
+            margin-right: auto; 
+            text-align: left; 
+            border-bottom-left-radius: 5px; 
+        }
+        .input-area { 
+            display: flex; 
+            padding: 20px; 
+            border-top: 1px solid #eee; 
+            align-items: center;
+        }
+        #user-input { 
+            flex-grow: 1; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 20px; 
+            font-size: 16px; 
+            margin-right: 10px; 
+        }
+        #send-button { 
+            background-color: #1a1a1a; 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: background-color 0.3s; 
+        }
+        #send-button:hover:not(:disabled) { 
+            background-color: #333; 
+        }
+        #send-button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        .status { 
+            text-align: center; 
+            padding: 5px 0; 
+            font-size: 0.9em;
+            color: #ff9900; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">🤖 Grok 4.1 AI Chat</div>
+        
+        <div class="chat-window" id="chat-window">
+            <div class="message grok-message">Hello! I'm Grok 4.1. Ask me anything, and I'll give you an answer with a dash of wit.</div>
+        </div>
+        
+        <div id="status" class="status" style="display:none;"></div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ask Grok a question...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    </body>
+</html>
