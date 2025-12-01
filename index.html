@@ -5,23 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Cid Kageno | Developer Portfolio</title>
 
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-    darkMode: 'class',
-    theme: {
-        extend: {
-            colors: {
-                primary: { 500: '#6366f1' },
-                secondary: { 500: '#a855f7' }
-            }
-        }
-    }
-};
-</script>
+<meta name="description" content="Cid Kageno's portfolio showcasing projects in AI, bot development, and web development. HSC24 Student, Developer, and Learner." />
+<meta property="og:title" content="Cid Kageno | Developer Portfolio" />
+<meta property="og:description" content="Cid Kageno's portfolio showcasing projects in AI, bot development, and web development." />
+<meta property="og:image" content="https://files.catbox.moe/3ii420.jpg" />
+<meta property="twitter:card" content="summary_large_image" />
 
-<!-- AOS CSS -->
+<link rel="preconnect" href="https://cdn.tailwindcss.com" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+<link rel="preconnect" href="https://img.icons8.com" />
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 
 <style>
@@ -89,125 +82,160 @@ tailwind.config = {
 
 <body class="bg-gray-900 text-white min-h-screen flex flex-col transition-colors duration-300">
 
-<!-- Navbar -->
 <custom-navbar></custom-navbar>
 
-<!-- HERO SECTION -->
-<section class="relative overflow-hidden py-16 md:py-20">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 backdrop-blur-2xl -z-10"></div>
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
-        <div class="md:w-1/2 flex justify-center md:justify-start" data-aos="fade-right">
-            <img src="https://files.catbox.moe/3ii420.jpg" alt="Cid Kageno Portrait" class="profile-pic" />
-        </div>
-        <div class="md:w-1/2 text-center md:text-left" data-aos="fade-left">
-            <h1 class="text-4xl sm:text-3xl font-bold text-white mb-4">Cid <span class="text-primary-500">Kageno</span></h1>
-            <h2 class="text-lg sm:text-base text-gray-300 mb-4">HSC24 Student • Developer • Learner</h2>
-            <p class="text-gray-200 mb-4 max-w-lg mx-auto md:mx-0">Passionate about AI, bot development, and web development. Constantly exploring tech and building meaningful projects.</p>
-            <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                <a href="#contact" class="px-5 py-2.5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">Contact Me</a>
-                <a href="#about" class="px-5 py-2.5 glass text-white rounded-lg transition-all duration-300">About Me</a>
+<main id="main-content">
+
+    <section class="relative overflow-hidden py-16 md:py-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 backdrop-blur-2xl -z-10"></div>
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-6">
+            <div class="md:w-1/2 flex justify-center md:justify-start" data-aos="fade-right">
+                <img 
+                    src="https://files.catbox.moe/3ii420.jpg" 
+                    alt="Cid Kageno Portrait" 
+                    class="profile-pic"
+                    loading="lazy" 
+                />
+            </div>
+            <div class="md:w-1/2 text-center md:text-left" data-aos="fade-left">
+                <h1 class="text-4xl sm:text-3xl font-bold text-white mb-4">Cid <span class="text-primary-500">Kageno</span></h1>
+                <h2 class="text-lg sm:text-base text-gray-300 mb-4">HSC24 Student • Developer • Learner</h2>
+                <p class="text-gray-200 mb-4 max-w-lg mx-auto md:mx-0">Passionate about AI, bot development, and web development. Constantly exploring tech and building meaningful projects.</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <a href="#contact" class="px-5 py-2.5 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">Contact Me</a>
+                    <a href="#about" class="px-5 py-2.5 glass text-white rounded-lg transition-all duration-300">About Me</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- TOOLS SECTION -->
-<section id="tools" class="py-12 md:py-16 relative">
-  <div class="container mx-auto px-6">
-    <h2 class="text-2xl font-bold text-center text-white mb-6" data-aos="zoom-in">My <span class="text-purple-500">Tools</span></h2>
-    <div class="tools-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 flex gap-4 overflow-x-auto scroll-smooth px-2">
-      <!-- Tool Cards -->
-      <a href="rimini.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
-        <img src="https://img.icons8.com/color/96/upscaler.png" alt="Rimini" class="mx-auto mb-2 rounded-full">
-        <h3 class="font-medium text-white text-md mb-1">Rimini</h3>
-        <p class="text-gray-300 text-xs">Upscale images to simulated 4K resolution.</p>
-      </a>
+    <section id="tools" class="py-12 md:py-16 relative">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-bold text-center text-white mb-6" data-aos="zoom-in">My <span class="text-purple-500">Tools</span></h2>
+        <div class="tools-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 flex gap-4 overflow-x-auto scroll-smooth px-2">
+          
+          <a href="rimini.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+            <img src="https://img.icons8.com/color/96/upscaler.png" alt="Rimini Icon" class="mx-auto mb-2 rounded-full" loading="lazy">
+            <h3 class="font-medium text-white text-md mb-1">Rimini</h3>
+            <p class="text-gray-300 text-xs">Upscale images to simulated 4K resolution.</p>
+          </a>
 
-      <a href="gemini.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
-        <img src="https://img.icons8.com/color/96/banana.png" alt="Nano Banana" class="mx-auto mb-2 rounded-full">
-        <h3 class="font-medium text-white text-md mb-1">Nano Banana</h3>
-        <p class="text-gray-300 text-xs">AI-powered creative edits.</p>
-      </a>
-      <a href="face-swap.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
-        <img src="https://img.icons8.com/color/96/face-id.png" alt="Face Swap" class="mx-auto mb-2 rounded-full">
-        <h3 class="font-medium text-white text-md mb-1">Face Swap</h3>
-        <p class="text-gray-300 text-xs">Swap faces in images using AI.</p>
-      </a>
+          <a href="gemini.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right" data-aos-delay="100">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+            <img src="https://img.icons8.com/color/96/banana.png" alt="Nano Banana Icon" class="mx-auto mb-2 rounded-full" loading="lazy">
+            <h3 class="font-medium text-white text-md mb-1">Nano Banana</h3>
+            <p class="text-gray-300 text-xs">AI-powered creative edits.</p>
+          </a>
+          
+          <a href="face-swap.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right" data-aos-delay="200">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+            <img src="https://img.icons8.com/color/96/face-id.png" alt="Face Swap Icon" class="mx-auto mb-2 rounded-full" loading="lazy">
+            <h3 class="font-medium text-white text-md mb-1">Face Swap</h3>
+            <p class="text-gray-300 text-xs">Swap faces in images using AI.</p>
+          </a>
 
-      <a href="other-tool.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
-        <img src="https://img.icons8.com/color/96/toolbox.png" alt="Other Tool" class="mx-auto mb-2 rounded-full">
-        <h3 class="font-medium text-white text-md mb-1">Other Tool</h3>
-        <p class="text-gray-300 text-xs">Description for another tool.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT & SKILLS SECTION -->
-<section id="about" class="py-16 md:py-20">
-  <div class="container mx-auto px-6">
-    <h2 class="text-2xl font-bold text-center text-white mb-8" data-aos="zoom-in">About <span class="text-primary-500">Me</span></h2>
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-start">
-      <div class="grid sm:grid-cols-1 gap-3">
-        <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="100">
-          <div class="text-primary-500 mb-1 text-xl"><i data-feather="map-pin"></i></div>
-          <h3 class="font-medium text-white mb-1">Location</h3>
-          <p class="text-gray-300">Bhanga, Faridpur</p>
-        </div>
-        <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="200">
-          <div class="text-primary-500 mb-1 text-xl"><i data-feather="book"></i></div>
-          <h3 class="font-medium text-white mb-1">Education</h3>
-          <p class="text-gray-300">HSC24 - Government Rajendra College</p>
-        </div>
-        <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="300">
-          <div class="text-primary-500 mb-1 text-xl"><i data-feather="heart"></i></div>
-          <h3 class="font-medium text-white mb-1">Interests</h3>
-          <p class="text-gray-300">AI, Bot Development, Web Dev</p>
-        </div>
-        <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="400">
-          <div class="text-primary-500 mb-1 text-xl"><i data-feather="award"></i></div>
-          <h3 class="font-medium text-white mb-1">Expertise</h3>
-          <p class="text-gray-300">Learning (Student)</p>
+          <a href="other-tool.html" target="_blank" class="glass min-w-[160px] p-4 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right" data-aos-delay="300">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+            <img src="https://img.icons8.com/color/96/toolbox.png" alt="Other Tool Icon" class="mx-auto mb-2 rounded-full" loading="lazy">
+            <h3 class="font-medium text-white text-md mb-1">Other Tool</h3>
+            <p class="text-gray-300 text-xs">Description for another tool.</p>
+          </a>
         </div>
       </div>
+    </section>
 
-      <!-- Skills Panel -->
-      <div class="relative" data-aos="fade-left" data-aos-delay="500">
-        <div class="glass p-5 md:p-6 rounded-2xl border border-white/15">
-          <h3 class="text-lg font-semibold text-white mb-3">My Skills</h3>
-          <div class="space-y-3">
-            <div class="skill-bar" data-aos="fade-up" data-aos-delay="100">
-              <div class="flex justify-between mb-1 text-white"><span>JavaScript</span><span>80%</span></div>
-              <div class="w-full bg-gray-700 rounded-full h-2">
-                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="80%"></div>
-              </div>
+    <section id="about" class="py-16 md:py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-bold text-center text-white mb-8" data-aos="zoom-in">About <span class="text-primary-500">Me</span></h2>
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div class="grid sm:grid-cols-1 gap-3">
+            <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="100">
+              <div class="text-primary-500 mb-1 text-xl"><i data-feather="map-pin"></i></div>
+              <h3 class="font-medium text-white mb-1">Location</h3>
+              <p class="text-gray-300">Bhanga, Faridpur</p>
             </div>
-            <div class="skill-bar" data-aos="fade-up" data-aos-delay="200">
-              <div class="flex justify-between mb-1 text-white"><span>Python</span><span>70%</span></div>
-              <div class="w-full bg-gray-700 rounded-full h-2">
-                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="70%"></div>
-              </div>
+            <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="200">
+              <div class="text-primary-500 mb-1 text-xl"><i data-feather="book"></i></div>
+              <h3 class="font-medium text-white mb-1">Education</h3>
+              <p class="text-gray-300">HSC24 - Government Rajendra College</p>
             </div>
-            <div class="skill-bar" data-aos="fade-up" data-aos-delay="300">
-              <div class="flex justify-between mb-1 text-white"><span>HTML/CSS</span><span>85%</span></div>
-              <div class="w-full bg-gray-700 rounded-full h-2">
-                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="85%"></div>
-              </div>
+            <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="300">
+              <div class="text-primary-500 mb-1 text-xl"><i data-feather="heart"></i></div>
+              <h3 class="font-medium text-white mb-1">Interests</h3>
+              <p class="text-gray-300">AI, Bot Development, Web Dev</p>
             </div>
-            <div class="skill-bar" data-aos="fade-up" data-aos-delay="400">
-              <div class="flex justify-between mb-1 text-white"><span>AI Development</span><span>65%</span></div>
-              <div class="w-full bg-gray-700 rounded-full h-2">
-                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="65%"></div>
+            <div class="glass p-4 rounded-xl border border-white/15 text-center sm:text-left" data-aos="fade-right" data-aos-delay="400">
+              <div class="text-primary-500 mb-1 text-xl"><i data-feather="award"></i></div>
+              <h3 class="font-medium text-white mb-1">Expertise</h3>
+              <p class="text-gray-300">Learning (Student)</p>
+            </div>
+          </div>
+
+          <div class="relative" data-aos="fade-left" data-aos-delay="500">
+            <div class="glass p-5 md:p-6 rounded-2xl border border-white/15">
+              <h3 class="text-lg font-semibold text-white mb-3">My Skills</h3>
+              <div class="space-y-3">
+                <div class="skill-bar" data-aos="fade-up" data-aos-delay="100">
+                  <div class="flex justify-between mb-1 text-white"><span>JavaScript</span><span>80%</span></div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="80%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar" data-aos="fade-up" data-aos-delay="200">
+                  <div class="flex justify-between mb-1 text-white"><span>Python</span><span>70%</span></div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="70%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar" data-aos="fade-up" data-aos-delay="300">
+                  <div class="flex justify-between mb-1 text-white"><span>HTML/CSS</span><span>85%</span></div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="85%"></div>
+                  </div>
+                </div>
+                <div class="skill-bar" data-aos="fade-up" data-aos-delay="400">
+                  <div class="flex justify-between mb-1 text-white"><span>AI Development</span><span>65%</span></div>
+                  <div class="w-full bg-gray-700 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2 rounded-full" data-width="65%"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
+    </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-    </div>
-  </div>
-</section>
+<script src="https://unpkg.com/feather-icons"></script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: { 500: '#6366f1' },
+                    secondary: { 500: '#a855f7' }
+                }
+            }
+        }
+    };
+    
+    // ⚙️ Initialize Scripts after DOM is ready
+    feather.replace();
+    AOS.init({ duration: 800, once: true });
+
+    // Logic to trigger the skill bar width animation on page load
+    document.querySelectorAll('.skill-bar div[data-width]').forEach(el => {
+        // We set the width style here, which triggers the CSS transition (1.5s ease-in-out)
+        el.style.width = el.getAttribute('data-width');
+    });
+</script>
+
+</body>
+</html>
