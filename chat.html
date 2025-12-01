@@ -15,12 +15,8 @@
 tailwind.config = {
   theme: {
     extend: {
-      colors: {
-        violet: { 500: '#8b5cf6' },
-      },
-      keyframes: {
-        fadeIn: { '0%': { opacity: '0', transform: 'translateY(5px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-      },
+      colors: { violet: { 500: '#8b5cf6' } },
+      keyframes: { fadeIn: { '0%': { opacity: '0', transform: 'translateY(5px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } } },
       animation: { fadeIn: 'fadeIn 0.3s ease forwards' },
     }
   }
@@ -31,6 +27,7 @@ tailwind.config = {
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: #000;
+    margin: 0;
 }
 
 .glass {
@@ -61,31 +58,31 @@ input:disabled {
 }
 </style>
 </head>
-<body class="text-white min-h-screen flex flex-col">
+<body class="text-white flex flex-col h-screen">
 
 <!-- Navbar -->
 <custom-navbar></custom-navbar>
 <ios-navbar></ios-navbar>
 
-<main class="container mx-auto px-4 py-12 flex-1 flex flex-col">
-    <div class="glass p-6 max-w-4xl mx-auto flex-1 flex flex-col">
-        <h1 class="text-4xl font-bold mb-4 text-center">ShadowGPT Portal</h1>
-        <p class="text-lg mb-6 text-center opacity-80">Converse with the shadows through this mystical AI interface</p>
+<main class="flex-1 flex flex-col">
+    <div class="glass flex-1 flex flex-col max-w-4xl mx-auto w-full m-2">
+        <h1 class="text-3xl md:text-4xl font-bold mb-3 text-center mt-4">ShadowGPT Portal</h1>
+        <p class="text-sm md:text-lg mb-4 text-center opacity-80 px-4">Converse with the shadows through this mystical AI interface</p>
 
         <!-- Chat container -->
-        <div id="chat-container" class="flex-1 mb-4 bg-gray-800/40 rounded-xl p-4 overflow-y-auto space-y-4">
+        <div id="chat-container" class="flex-1 mb-2 bg-gray-800/40 rounded-xl p-4 overflow-y-auto space-y-4">
             <div class="flex justify-start">
-                <div class="bg-violet-500/20 rounded-tr-xl rounded-br-xl rounded-bl-xl p-4 max-w-xs md:max-w-md">
+                <div class="bg-violet-500/20 rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 max-w-[80%] md:max-w-xs">
                     <p class="text-sm">Greetings, shadow walker. What knowledge do you seek from the void?</p>
                 </div>
             </div>
         </div>
 
-        <!-- Input bar -->
-        <div class="flex gap-2 mt-auto">
-            <input type="text" id="user-input" aria-label="Chat input" placeholder="Whisper to the shadows..." 
+        <!-- Input bar fixed to bottom -->
+        <div class="flex gap-2 p-2 bg-gray-900/50 rounded-xl mx-2 mb-2">
+            <input type="text" id="user-input" placeholder="Whisper to the shadows..."
                 class="flex-1 px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500">
-            <button id="send-btn" class="px-5 py-3 bg-violet-600 hover:bg-violet-700 rounded-xl font-medium transition-colors flex items-center gap-2">
+            <button id="send-btn" class="px-4 py-3 bg-violet-600 hover:bg-violet-700 rounded-xl font-medium flex items-center gap-2">
                 <i data-feather="send"></i>
                 <span>Send</span>
             </button>
@@ -94,7 +91,7 @@ input:disabled {
 </main>
 
 <!-- Footer with rights reserved -->
-<footer class="text-center text-gray-400 py-4 text-sm">
+<footer class="text-center text-gray-400 py-2 text-xs md:text-sm">
     &copy; 2025 Cid Kageno. All rights reserved.
 </footer>
 
@@ -111,18 +108,16 @@ const shadowAI = {
     loading: false,
     queryAI: async (message) => {
         shadowAI.loading = true;
-        await new Promise(r => setTimeout(r, 1200 + Math.random()*800)); // simulate thinking
+        await new Promise(r => setTimeout(r, 1200 + Math.random()*800));
         shadowAI.loading = false;
         return `Shadow echoes: "${message}"`;
     }
 };
 
-// Chat Elements
 const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 
-// Typing effect
 function typeWriter(element, text, speed = 50, callback) {
     let i = 0;
     const interval = setInterval(() => {
@@ -137,15 +132,14 @@ function typeWriter(element, text, speed = 50, callback) {
     }, speed);
 }
 
-// Add chat message
 function addMessage(sender, message, animateTyping=false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `flex ${sender==='user'?'justify-end':'justify-start'} animate-fadeIn`;
     
     const bubbleDiv = document.createElement('div');
     bubbleDiv.className = sender==='user'
-        ? 'bg-violet-500 rounded-tl-xl rounded-tr-none rounded-br-xl rounded-bl-xl p-4 max-w-xs md:max-w-md'
-        : 'bg-violet-500/20 rounded-tl-none rounded-tr-xl rounded-br-xl rounded-bl-xl p-4 max-w-xs md:max-w-md';
+        ? 'bg-violet-500 rounded-tl-xl rounded-tr-none rounded-br-xl rounded-bl-xl p-3 max-w-[80%] md:max-w-xs'
+        : 'bg-violet-500/20 rounded-tl-none rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 max-w-[80%] md:max-w-xs';
 
     const p = document.createElement('p');
     p.className = 'text-sm';
@@ -159,7 +153,6 @@ function addMessage(sender, message, animateTyping=false) {
     else p.textContent = message;
 }
 
-// Send message
 async function sendMessage() {
     const msg = userInput.value.trim();
     if(!msg || shadowAI.loading) return;
@@ -168,10 +161,9 @@ async function sendMessage() {
     userInput.value = '';
     userInput.disabled = true;
 
-    // Thinking dots
     const thinkingDiv = document.createElement('div');
     thinkingDiv.className = 'flex justify-start animate-fadeIn';
-    thinkingDiv.innerHTML = `<div class="rounded-tl-none rounded-tr-xl rounded-br-xl rounded-bl-xl p-4 max-w-xs md:max-w-md bg-violet-500/20 flex gap-2"><div class="dot-flashing"></div></div>`;
+    thinkingDiv.innerHTML = `<div class="rounded-tl-none rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 max-w-[80%] md:max-w-xs bg-violet-500/20 flex gap-2"><div class="dot-flashing"></div></div>`;
     chatContainer.appendChild(thinkingDiv);
     chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: 'smooth' });
 
