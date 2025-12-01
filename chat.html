@@ -137,15 +137,8 @@ body {
 <script>
 feather.replace();
 
-const shadowAI = {
-  loading: false,
-  queryAI: async (message) => {
-    shadowAI.loading = true;
-    await new Promise(r => setTimeout(r, 1200 + Math.random()*800));
-    shadowAI.loading = false;
-    return `Shadow echoes: "${message}"`;
-  }
-};
+// Backend API URL
+const BACKEND_URL = "http://localhost:3000/api/ask"; // Replace with deployed backend URL
 
 const chatContainer = document.getElementById('chat-container');
 const userInput = document.getElementById('user-input');
@@ -188,7 +181,7 @@ function addMessage(sender, message, animateTyping=false) {
 
 async function sendMessage() {
   const msg = userInput.value.trim();
-  if(!msg || shadowAI.loading) return;
+  if(!msg) return;
 
   addMessage('user', msg);
   userInput.value = '';
@@ -201,9 +194,14 @@ async function sendMessage() {
   chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: 'smooth' });
 
   try {
-    const response = await shadowAI.queryAI(msg);
+    const res = await fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg })
+    });
+    const data = await res.json();
     chatContainer.removeChild(thinkingDiv);
-    addMessage('bot', response, true);
+    addMessage('bot', data.answer, true);
   } catch(e) {
     chatContainer.removeChild(thinkingDiv);
     addMessage('bot', "The shadows are disturbed... try again later.");
