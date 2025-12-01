@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Banana Image Editor - Powered by Gemini AI</title>
+    <style>
+        /* Basic Styling */
+        body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f9; }
+        header { text-align: center; color: #1e3a8a; }
+        .container { display: flex; flex-direction: column; gap: 20px; background-color: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #374151; }
+        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; }
+        textarea { min-height: 100px; resize: vertical; }
+        button { background-color: #1e3a8a; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
+        button:hover { background-color: #1e4b8a; }
+        .output-section { text-align: center; margin-top: 30px; }
+        #image-output { max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 8px; object-fit: contain; min-height: 200px; background-color: #eee; }
+        .status { margin-top: 15px; font-weight: bold; color: #10b981; }
+        #download-link { display: inline-block; margin-top: 10px; color: #1e3a8a; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍌 Nano Banana AI Image Studio</h1>
+        <p>Use an image URL and a text prompt to edit a photo using the Nano Banana API.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="input-group">
+            <label for="image-url">1. Public Image URL (e.g., from Imgur, your website, etc.)</label>
+            <input type="text" id="image-url" placeholder="Paste your image URL here (must be publicly accessible)">
+        </div>
+
+        <div class="input-group">
+            <label for="edit-prompt">2. Editing Prompt</label>
+            <p style="font-size: 0.9em; color: #6b7280;">Describe the desired edit (e.g., "Change the background to a snowy mountain and make the dog wear sunglasses").</p>
+            <textarea id="edit-prompt" placeholder="Type your creative prompt here..."></textarea>
+        </div>
+        
+        <button id="generate-button">✨ Generate/Edit Image</button>
+        <div id="status" class="status">Awaiting input...</div>
+        
+        <div class="output-section">
+            <h2>3. AI Edited Output</h2>
+            <img id="image-output" src="https://via.placeholder.com/450x450?text=AI+Edited+Image+Will+Appear+Here" alt="AI Generated/Edited Image">
+            <a id="download-link" download="nano-banana-edit.png" style="display:none;">⬇️ Download Image</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-button').addEventListener('click', async () => {
+            const prompt = document.getElementById('edit-prompt').value.trim();
+            const imageUrl = document.getElementById('image-url').value.trim();
+            const statusDiv = document.getElementById('status');
+            const outputImage = document.getElementById('image-output');
+            const downloadLink = document.getElementById('download-link');
+            
+            // --- Input Validation ---
+            if (!imageUrl) {
+                statusDiv.textContent = '⚠️ Please provide a public Image URL.';
+                statusDiv.style.color = '#ef4444';
+                return;
+            }
+            if (!prompt) {
+                statusDiv.textContent = '⚠️ Please enter an editing prompt.';
+                statusDiv.style.color = '#ef4444';
+                return;
+            }
+
+            const API_ENDPOINT = 'https://cyber-nanobanana.vercel.app/nanobanana';
+            
+            // Encode the parameters to safely include special characters and spaces
+            const requestPrompt = encodeURIComponent(prompt);
+            const requestImageUrl = encodeURIComponent(imageUrl);
+            
+            // Construct the full GET request URL as defined in edit.js
+            const requestURL = `${API_ENDPOINT}?prompt=${requestPrompt}&imageUrl=${requestImageUrl}`;
+
+            // --- API Request ---
+            statusDiv.textContent = 'Processing with Nano Banana... Please wait. (This may take 10-30 seconds)';
+            statusDiv.style.color = '#f59e0b';
+            outputImage.src = 'https://via.placeholder.com/450x450?text=Processing...';
+            downloadLink.style.display = 'none';
+
+            try {
+                // First GET request to your API to trigger the image edit
+                const response = await fetch(requestURL);
+                const data = await response.json();
+
+                if (!response.ok || !data.success || !data.result || !data.result[0]) {
+                    // Handle API errors (e.g., invalid URL, processing failed)
+                    statusDiv.textContent = `❌ API Error: ${data.error || 'Failed to generate image.'}`;
+                    statusDiv.style.color = '#ef4444';
+                    outputImage.src = 'https://via.placeholder.com/450x450?text=Error';
+                    return;
+                }
+
+                const finalImageURL = data.result[0];
+
+                // Second step: Display the resulting image URL
+                statusDiv.textContent = '✅ Image generated successfully! Displaying image...';
+                statusDiv.style.color = '#10b981';
+                
+                outputImage.src = finalImageURL;
+                downloadLink.href = finalImageURL;
+                downloadLink.style.display = 'inline-block';
+
+            } catch (error) {
+                statusDiv.textContent = '❌ Network Error: Could not connect to the API.';
+                statusDiv.style.color = '#ef4444';
+                console.error("Fetch Error:", error);
+            }
+        });
+    </script>
+</body>
+</html>
