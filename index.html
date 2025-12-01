@@ -187,22 +187,43 @@ tailwind.config = {
     <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="zoom-in">
       About <span class="text-primary-500">Me</span>
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div data-aos="fade-right">
-        <p class="text-gray-200 mb-4 text-lg">I'm a below-average student at BRAC University, Dhaka — exploring tech and building fun things.</p>
-        <p class="text-gray-200 mb-6 text-lg">Development, AI, automation — these things keep me curious.</p>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
-            <i data-feather="map-pin" class="text-primary-500"></i>
-            <h3 class="font-medium text-white mt-2">Location</h3>
-            <p class="text-gray-400">Bhanga, Faridpur</p>
-          </div>
-          <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
-            <i data-feather="book" class="text-primary-500"></i>
-            <h3 class="font-medium text-white mt-2">Education</h3>
-            <p class="text-gray-400">HSC24 - Rajendra College</p>
-          </div>
-        </div>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+  <!-- Location -->
+  <div class="glass p-5 rounded-xl border border-white/15 text-center sm:text-left" role="region" aria-label="Location">
+    <div class="text-primary-500 mb-2 text-2xl">
+      <i data-feather="map-pin"></i>
+    </div>
+    <h3 class="font-medium text-white mb-1">Location</h3>
+    <p class="text-gray-400">Bhanga, Faridpur</p>
+  </div>
+
+  <!-- Education -->
+  <div class="glass p-5 rounded-xl border border-white/15 text-center sm:text-left" role="region" aria-label="Education">
+    <div class="text-primary-500 mb-2 text-2xl">
+      <i data-feather="book"></i>
+    </div>
+    <h3 class="font-medium text-white mb-1">Education</h3>
+    <p class="text-gray-400">HSC24 - Government Rajendra College</p>
+  </div>
+
+  <!-- Interests -->
+  <div class="glass p-5 rounded-xl border border-white/15 text-center sm:text-left" role="region" aria-label="Interests">
+    <div class="text-primary-500 mb-2 text-2xl">
+      <i data-feather="heart"></i>
+    </div>
+    <h3 class="font-medium text-white mb-1">Interests</h3>
+    <p class="text-gray-400">AI, Bot Development, Web Dev</p>
+  </div>
+
+  <!-- Expertise -->
+  <div class="glass p-5 rounded-xl border border-white/15 text-center sm:text-left" role="region" aria-label="Expertise">
+    <div class="text-primary-500 mb-2 text-2xl">
+      <i data-feather="award"></i>
+    </div>
+    <h3 class="font-medium text-white mb-1">Expertise</h3>
+    <p class="text-gray-400">Learning (Student)</p>
+  </div>
+    </div>
       </div>
 
       <!-- Skills -->
