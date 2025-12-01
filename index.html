@@ -65,42 +65,41 @@ tailwind.config = {
 }
 
 /* Scrollbar customization */
-.scrollbar-thin {
-    scrollbar-width: thin;
-}
-.scrollbar-thumb-gray-600 {
-    scrollbar-color: #4b5563 transparent;
-}
-.scrollbar-track-gray-800 {
-    background: #1f2937;
-}
+.scrollbar-thin { scrollbar-width: thin; }
+.scrollbar-thumb-gray-600 { scrollbar-color: #4b5563 transparent; }
+.scrollbar-track-gray-800 { background: #1f2937; }
 
 /* Tools horizontal scroll & snap */
 .tools-scroll {
-    overflow-x-auto;
+    overflow-x: auto;
     display: flex;
     gap: 1.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 1rem;
 }
-.tools-scroll > a {
-    scroll-snap-align: start;
+.tools-scroll > a { scroll-snap-align: start; }
+
+/* Tools hover image animation */
+.tools-scroll a.group:hover img {
+    transform: scale(1.1) rotate(3deg);
+    transition: transform 0.3s ease;
+}
+
+/* Carousel arrows */
+#tools-prev, #tools-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-    .glass {
-        padding: 1.25rem;
-        min-width: 140px;
-    }
-    .profile-pic {
-        width: 128px;
-        height: 128px;
-    }
-    h1 {
-        font-size: 2.75rem;
-    }
+    .glass { padding: 1.25rem; min-width: 140px; }
+    .profile-pic { width: 128px; height: 128px; }
+    h1 { font-size: 2.75rem; }
 }
 </style>
 </head>
@@ -143,136 +142,160 @@ tailwind.config = {
     </div>
 </section>
 
-<!-- TOOLS SECTION -->
-<section id="tools" class="py-16 md:py-20">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-white mb-8" data-aos="zoom-in">
-            My <span class="text-purple-500">Tools</span>
-        </h2>
-        <div class="tools-scroll">
-            <!-- 4K Upscaler -->
-            <a href="rimini.html" target="_blank" aria-label="Open 4K Upscaler Tool"
-               class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center" data-aos="fade-right">
-                <img src="https://via.placeholder.com/80" alt="4K Upscaler" class="mx-auto mb-4 rounded-full">
-                <h3 class="font-medium text-white text-lg mb-2">4K Upscaler</h3>
-                <p class="text-gray-400 text-sm">Upscale images to simulated 4K resolution.</p>
-            </a>
-            <!-- Nano Banana -->
-            <a href="nano-banana.html" target="_blank" aria-label="Open Nano Banana Tool"
-               class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center" data-aos="fade-right">
-                <img src="https://via.placeholder.com/80" alt="Nano Banana" class="mx-auto mb-4 rounded-full">
-                <h3 class="font-medium text-white text-lg mb-2">Nano Banana</h3>
-                <p class="text-gray-400 text-sm">AI-powered creative edits.</p>
-            </a>
-            <!-- Face Swap -->
-            <a href="face-swap.html" target="_blank" aria-label="Open Face Swap Tool"
-               class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center" data-aos="fade-right">
-                <img src="https://via.placeholder.com/80" alt="Face Swap" class="mx-auto mb-4 rounded-full">
-                <h3 class="font-medium text-white text-lg mb-2">Face Swap</h3>
-                <p class="text-gray-400 text-sm">Swap faces in images using AI.</p>
-            </a>
-            <!-- Other Tool -->
-            <a href="other-tool.html" target="_blank" aria-label="Open Other Tool"
-               class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center" data-aos="fade-right">
-                <img src="https://via.placeholder.com/80" alt="Other Tool" class="mx-auto mb-4 rounded-full">
-                <h3 class="font-medium text-white text-lg mb-2">Other Tool</h3>
-                <p class="text-gray-400 text-sm">Description for another tool.</p>
-            </a>
-        </div>
+<!-- TOOLS SECTION WITH CAROUSEL -->
+<section id="tools" class="py-16 md:py-20 relative">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-white mb-8" data-aos="zoom-in">
+      My <span class="text-purple-500">Tools</span>
+    </h2>
+
+    <!-- Carousel Wrapper -->
+    <div class="relative">
+      <!-- Left Arrow -->
+      <button id="tools-prev" aria-label="Scroll Left" 
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-black/50 text-white rounded-full hover:bg-black/70 transition">
+        &#10094;
+      </button>
+
+      <!-- Right Arrow -->
+      <button id="tools-next" aria-label="Scroll Right" 
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-black/50 text-white rounded-full hover:bg-black/70 transition">
+        &#10095;
+      </button>
+
+      <!-- Tools Scroll Container -->
+      <div class="tools-scroll scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 flex gap-6 overflow-x-auto scroll-smooth px-4">
+        <!-- 4K Upscaler -->
+        <a href="rimini.html" target="_blank" aria-label="Open 4K Upscaler Tool"
+           class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+          <img src="https://img.icons8.com/color/96/upscaler.png" alt="4K Upscaler" class="mx-auto mb-4 rounded-full">
+          <h3 class="font-medium text-white text-lg mb-2">4K Upscaler</h3>
+          <p class="text-gray-400 text-sm">Upscale images to simulated 4K resolution.</p>
+        </a>
+
+        <!-- Nano Banana -->
+        <a href="nano-banana.html" target="_blank" aria-label="Open Nano Banana Tool"
+           class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+          <img src="https://img.icons8.com/color/96/banana.png" alt="Nano Banana" class="mx-auto mb-4 rounded-full">
+          <h3 class="font-medium text-white text-lg mb-2">Nano Banana</h3>
+          <p class="text-gray-400 text-sm">AI-powered creative edits.</p>
+        </a>
+
+        <!-- Face Swap -->
+        <a href="face-swap.html" target="_blank" aria-label="Open Face Swap Tool"
+           class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+          <img src="https://img.icons8.com/color/96/face-id.png" alt="Face Swap" class="mx-auto mb-4 rounded-full">
+          <h3 class="font-medium text-white text-lg mb-2">Face Swap</h3>
+          <p class="text-gray-400 text-sm">Swap faces in images using AI.</p>
+        </a>
+
+        <!-- Other Tool -->
+        <a href="other-tool.html" target="_blank" aria-label="Open Other Tool"
+           class="glass min-w-[180px] p-6 rounded-2xl border border-white/15 text-center relative overflow-hidden group" data-aos="fade-right">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-50 transition-opacity rounded-2xl"></div>
+          <img src="https://img.icons8.com/color/96/toolbox.png" alt="Other Tool" class="mx-auto mb-4 rounded-full">
+          <h3 class="font-medium text-white text-lg mb-2">Other Tool</h3>
+          <p class="text-gray-400 text-sm">Description for another tool.</p>
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- ABOUT & SKILLS SECTION -->
 <section id="about" class="py-20">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="zoom-in">
-            About <span class="text-primary-500">Me</span>
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <p class="text-gray-200 mb-4 text-lg">I'm a below-average student at BRAC University, Dhaka — exploring tech and building fun things.</p>
-                <p class="text-gray-200 mb-6 text-lg">Development, AI, automation — these things keep me curious.</p>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
-                        <i data-feather="map-pin" class="text-primary-500"></i>
-                        <h3 class="font-medium text-white mt-2">Location</h3>
-                        <p class="text-gray-400">Bhanga, Faridpur</p>
-                    </div>
-                    <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
-                        <i data-feather="book" class="text-primary-500"></i>
-                        <h3 class="font-medium text-white mt-2">Education</h3>
-                        <p class="text-gray-400">HSC24 - Rajendra College</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Skills -->
-            <div class="relative" data-aos="fade-left">
-                <div class="glass p-6 md:p-8 rounded-2xl border border-white/15">
-                    <h3 class="text-xl font-semibold text-white mb-4">My Skills</h3>
-                    <div class="space-y-4">
-                        <div class="skill-bar" data-aos="fade-up">
-                            <div class="flex justify-between mb-1 text-white">
-                                <span>JavaScript</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-aos="fade-up">
-                            <div class="flex justify-between mb-1 text-white">
-                                <span>Python</span>
-                                <span>70%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="70%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-aos="fade-up">
-                            <div class="flex justify-between mb-1 text-white">
-                                <span>HTML/CSS</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-aos="fade-up">
-                            <div class="flex justify-between mb-1 text-white">
-                                <span>AI Development</span>
-                                <span>65%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2.5">
-                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="65%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="zoom-in">
+      About <span class="text-primary-500">Me</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <p class="text-gray-200 mb-4 text-lg">I'm a below-average student at BRAC University, Dhaka — exploring tech and building fun things.</p>
+        <p class="text-gray-200 mb-6 text-lg">Development, AI, automation — these things keep me curious.</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
+            <i data-feather="map-pin" class="text-primary-500"></i>
+            <h3 class="font-medium text-white mt-2">Location</h3>
+            <p class="text-gray-400">Bhanga, Faridpur</p>
+          </div>
+          <div class="glass p-4 rounded-xl border border-white/15" data-aos="zoom-in">
+            <i data-feather="book" class="text-primary-500"></i>
+            <h3 class="font-medium text-white mt-2">Education</h3>
+            <p class="text-gray-400">HSC24 - Rajendra College</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="relative" data-aos="fade-left">
+        <div class="glass p-6 md:p-8 rounded-2xl border border-white/15">
+          <h3 class="text-xl font-semibold text-white mb-4">My Skills</h3>
+          <div class="space-y-4">
+            <div class="skill-bar" data-aos="fade-up">
+              <div class="flex justify-between mb-1 text-white">
+                <span>JavaScript</span>
+                <span>80%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar" data-aos="fade-up">
+              <div class="flex justify-between mb-1 text-white">
+                <span>Python</span>
+                <span>70%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="70%"></div>
+              </div>
+            </div>
+            <div class="skill-bar" data-aos="fade-up">
+              <div class="flex justify-between mb-1 text-white">
+                <span>HTML/CSS</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar" data-aos="fade-up">
+              <div class="flex justify-between mb-1 text-white">
+                <span>AI Development</span>
+                <span>65%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" data-width="65%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-20">
-    <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="zoom-in">
-            Get In <span class="text-primary-500">Touch</span>
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="https://wa.me/8801731371266" class="glass p-6 rounded-xl border border-white/15 text-center">
-                <i data-feather="phone" class="w-8 h-8 text-primary-500 mx-auto mb-2"></i>
-                <h3 class="font-medium text-white">WhatsApp</h3>
-                <p class="text-gray-400 text-sm">+880 17313 71266</p>
-            </a>
-            <a href="mailto:mrityunjoymondol1@gmail.com" class="glass p-6 rounded-xl border border-white/15 text-center">
-                <i data-feather="mail" class="w-8 h-8 text-primary-500 mx-auto mb-2"></i>
-                <h3 class="font-medium text-white">Email</h3>
-                <p class="text-gray-400 text-sm">mrityunjoymondol1@gmail.com</p>
-            </a>
-        </div>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="zoom-in">
+      Get In <span class="text-primary-500">Touch</span>
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="https://wa.me/8801731371266" class="glass p-6 rounded-xl border border-white/15 text-center">
+        <i data-feather="phone" class="w-8 h-8 text-primary-500 mx-auto mb-2"></i>
+        <h3 class="font-medium text-white">WhatsApp</h3>
+        <p class="text-gray-400 text-sm">+880 17313 71266</p>
+      </a>
+      <a href="mailto:mrityunjoymondol1@gmail.com" class="glass p-6 rounded-xl border border-white/15 text-center">
+        <i data-feather="mail" class="w-8 h-8 text-primary-500 mx-auto mb-2"></i>
+        <h3 class="font-medium text-white">Email</h3>
+        <p class="text-gray-400 text-sm">mrityunjoymondol1@gmail.com</p>
+      </a>
     </div>
+  </div>
 </section>
 
 <!-- Footer -->
@@ -330,8 +353,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     customElements.define('custom-footer', CustomFooter);
-});
-</script>
 
-</body>
-</html>
+    // Tools Carousel Buttons
+    const scrollContainer = document.querySelector('.tools-scroll');
+    const prevBtn = document.getElementById('tools-prev');
+    const nextBtn = document.getElementById('tools-next
